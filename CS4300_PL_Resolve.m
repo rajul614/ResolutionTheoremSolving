@@ -4,20 +4,20 @@ function resolvents = CS4300_PL_Resolve(clause1,clause2)
     
     num_resolvent = 1;
        
-    for c1 = 1:len(clause1)
+    for c1 = 1:length(clause1)
         d1 = clause1(c1);
-        for c2 = 1:len(clause2)
-            d2 = clause1(c2);
+        for c2 = 1:length(clause2)
+            d2 = clause2(c2);
             if(d1 == -d2)
                 v1 = [clause1(1:c1-1), clause1(c1+1:end),clause2(1:c2-1), clause2(c2+1:end)]; 
                 v1 = Rem_Contradictions(v1);
-                resolvents(1, num_resolvent) = sort(v1);
+                resolvents{num_resolvent} = sort(v1);
                 num_resolvent = num_resolvent + 1;
             end
         end
     end
     
-    resolvents = Rem_Duplicates(resolvents);
+    resolvents = Rem_Duplicates(resolvents)
     
     
 
