@@ -1,4 +1,17 @@
 function resolvents = CS4300_PL_Resolve(clause1,clause2)
+% CS4300_PL_Resolve - resolution theorem prover
+% On input:
+% clause1 : 1rst conjuctive clause
+% clause2 : 2nd conjuctive clause
+% On output:
+% resolvents : results of resolve
+% Call:
+% resolvents = CS4300_PL_Resolve([17,-2,5],[-17,5]);
+% Author:
+% Rajul Ramchandani and Conan Zhang
+% UU
+% Fall 2016
+%
 
     resolvents = [];
     

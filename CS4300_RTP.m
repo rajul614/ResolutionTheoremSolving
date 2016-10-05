@@ -24,4 +24,7 @@ function Sip = CS4300_RTP(sentences,thm,vars)
 % Fall 2016
 %
 
-
+clauses = [];
+new = [];
+while 1
+end
