@@ -1,23 +1,11 @@
 function rem_duplicates = Rem_Duplicates(resolvents)
-% CS4300_Rem_Duplicates - resolution theorem prover
+% CS4300_Rem_Duplicates - removes duplicate resolvents
 % On input:
-% sentences (CNF data structure): array of conjuctive clauses
-% (i).clauses
-% each clause is a list of integers (- for negated literal)
-% thm (CNF datastructure): a disjunctive clause to be tested
-% vars (1xn vector): list of variables (positive integers)
+% resolvents: array of conjunctive resolvents
 % On output:
-% Sip (CNF data structure): results of resolution
-% []: proved sentence |- thm
-% not []: thm does not follow from sentences
+% rem_duplicates : array of conjunctive resolvents without duplicates
 % Call: (example from Russell & Norvig, p. 252)
-% DP(1).clauses = [-1,2,3,4];
-% DP(2).clauses = [-2];
-% DP(3).clauses = [-3];
-% DP(4).clauses = [1];
-% thm = [4];
-% vars = [1,2,3,4];
-% Sr = CS4300_RTP(DP,thm,vars);
+% Sr = CS4300_RTP(resolvents);
 % Author:
 % Rajul Ramchandani and Conan Zhang
 % UU

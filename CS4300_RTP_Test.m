@@ -1,4 +1,14 @@
 function ans = CS4300_RTP_Test()
+% CS4300_RTP_Test - Test for resolution theorem prover
+% On output:
+% ans : results of resolve
+% Call:
+% CS4300_RTP_Test();
+% Author:
+% Rajul Ramchandani and Conan Zhang
+% UU
+% Fall 2016
+%
     DP = [];
     DP(1).clauses = [-1,2];
     DP(2).clauses = [1];
