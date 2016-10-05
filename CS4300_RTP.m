@@ -60,9 +60,18 @@ function contains_empty = Contains_Empty_Clause(resolvents)
 end
 
 function is_subset = Is_Subset(new, sentences)
+    is_subset = 0;
+    counter = 0;
     for r1 = 1:length(new)
+        currentNew = new(r1);
         for r2 = 1:length(sentences)
-            % TODO Finish implementation
+            currentSentence = sentences(r2);
+            if isequal(currentNew, currentSentence)
+                counter = counter + 1;
+            end            
         end
+    end
+    if counter == length(new)
+        is_subset = 1;
     end
 end
