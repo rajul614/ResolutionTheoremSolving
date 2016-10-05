@@ -16,7 +16,8 @@ function resolvents = CS4300_PL_Resolve(clause1,clause2)
     resolvents = [];
     
     num_resolvent = 1;
-       
+    
+    
     for c1 = 1:length(clause1)
         d1 = clause1(c1);
         for c2 = 1:length(clause2)
@@ -25,14 +26,14 @@ function resolvents = CS4300_PL_Resolve(clause1,clause2)
                 v1 = [clause1(1:c1-1), clause1(c1+1:end),clause2(1:c2-1), clause2(c2+1:end)]; 
                 %v1 = Rem_Contradictions(v1);
                 v1 = unique(v1);
-                resolvents(num_resolvent).resolvent = sort(v1);
+                resolvents(num_resolvent).clauses = sort(v1);
                 num_resolvent = num_resolvent + 1;
             end
         end
     end
     
-    resolvents = Rem_Duplicates(resolvents)    
-
+    resolvents = Rem_Duplicates(resolvents);    
+    %ask prof about removing duplicates
 end
 
 function rem_contradictions = Rem_Contradictions(v1)

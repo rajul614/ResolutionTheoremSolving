@@ -31,18 +31,18 @@ function rem_duplicates = Rem_Duplicates(resolvents)
     end
     
     for i = 1:length(resolvents)
-        d1 = resolvents(i).resolvent;
+        d1 = resolvents(i).clauses;
         for j = i+1:length(resolvents)
-            d2 = resolvents(j).resolvent;
+            d2 = resolvents(j).clauses;
             if(isequal(d1, d2))
-                resolvents(j).resolvent = [0,0];
+                resolvents(j).clauses = [0,0];
             end
         end
     end
     
     for i = 1:length(resolvents)
-        if(~isequal(resolvents(i).resolvent, [0,0]))
-            rem_duplicates(rem_counter).resolvent = resolvents(i).resolvent;
+        if(~isequal(resolvents(i).clauses, [0,0]))
+            rem_duplicates(rem_counter).clauses = resolvents(i).clauses;
             rem_counter = rem_counter + 1;
         end
     end
