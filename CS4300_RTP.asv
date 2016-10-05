@@ -62,7 +62,10 @@ end
 function is_subset = Is_Subset(new, sentences)
     for r1 = 1:length(new)
         for r2 = 1:length(sentences)
-            % TODO Finish implementation
+            if isempty(resolvents(i).resolvent)
+                contains_empty = 1;
+                return;
+            end
         end
     end
 end
