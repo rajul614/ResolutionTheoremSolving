@@ -52,7 +52,8 @@ while 1
             
             if Contains_Empty_Clause(resolvents)
                Sip = [];
-               ctable
+               %Uncomment to print ctable when done
+               %ctable
                return;
             end
             if ~isempty(resolvents)
