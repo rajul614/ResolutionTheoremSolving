@@ -31,21 +31,43 @@ for k = 1:length(thm)
     clause(end+1).clauses = -thm(k);
 end
 
+ctable = {};
+
 
 while 1
     for c1 = 1:length(clause)
         for c2 = c1+1:length(clause)
             resolvents = CS4300_PL_Resolve(clause(c1).clauses, clause(c2).clauses);
+            
+            
+            %Uncomment to get ctable with [c1] [c2] [resolvents]
+%             ctable{end+1, 1} = c1;
+%             ctable{end, 2} = c2;
+%             if Contains_Empty_Clause(resolvents)
+%                 ctable{end, 3} = [];
+%             elseif(~isempty(resolvents))
+%                 ctable{end, 3} = resolvents.clauses
+%             end
+            
+            
             if Contains_Empty_Clause(resolvents)
                Sip = [];
+               ctable
                return;
             end
             if ~isempty(resolvents)
                 new = [new resolvents];
                 new = Rem_Duplicates(new);
             end
+            
+            %Uncomment for Table of with new for every iteration
+           %T = struct2table(new)
+            
         end
+        
     end
+    
+    
     
     if Is_Subset(new, clause)
         Sip = new;
@@ -55,6 +77,7 @@ while 1
     clause = [clause, new];
     clause = Rem_Duplicates(clause);
 end
+
 end
 
 function contains_empty = Contains_Empty_Clause(resolvents)
