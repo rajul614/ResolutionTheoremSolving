@@ -26,10 +26,13 @@ function Sip = CS4300_RTP(sentences,thm,vars)
 
 clause = sentences;
 new = [];
+iteration_count = 0;
 
 for k = 1:length(thm)
     clause(end+1).clauses = -thm(k);
 end
+
+initial_clause_count = length(clause)
 
 ctable = {};
 
@@ -37,6 +40,7 @@ ctable = {};
 while 1
     for c1 = 1:length(clause)
         for c2 = c1+1:length(clause)
+            iteration_count = iteration_count + 1;
             resolvents = CS4300_PL_Resolve(clause(c1).clauses, clause(c2).clauses);
             
             
@@ -54,12 +58,12 @@ while 1
                Sip = [];
                %Uncomment to print ctable when done
                %ctable
+               sentences_produced = length(clause) - initial_clause_count
+               iteration_count
                return;
             end
-            if ~isempty(resolvents)
-                new = [new resolvents];
-                new = Rem_Duplicates(new);
-            end
+            new = [new resolvents];
+            new = Rem_Duplicates(new);
             
             %Uncomment for Table of with new for every iteration
            %T = struct2table(new)
@@ -71,7 +75,9 @@ while 1
     
     
     if Is_Subset(new, clause)
-        Sip = new;
+        Sip = clause;
+        sentences_produced = length(clause) - initial_clause_count
+        iteration_count
         return;
     end
     
